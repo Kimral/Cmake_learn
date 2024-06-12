@@ -1,14 +1,10 @@
 ﻿cmake_minimum_required (VERSION 3.30)
 
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-endif()
+project("App" 
+		VERSION 0.0.1 
+		LANGUAGES CXX)
 
-project ("Cmake_learn")
+add_executable(App "main.cpp" "main.h")
+add_executable(App_Win32 "main.cpp" "main.h")
 
-add_executable (Cmake_learn "main.cpp" "main.h")
-
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Cmake_learn PROPERTY CXX_STANDARD 20)
-endif()
+set_property(TARGET App PROPERTY CXX_STANDARD 20)
